@@ -16,7 +16,7 @@ public class ParseGradebookUrl {
         Matcher m = MY_PATTERN.matcher(homePageUrl);
         if (m.find()) {
             serialNumber = m.group(1);
-            System.out.println("This is the goodgood: " + serialNumber);
+
         }
         return serialNumber;
     }
@@ -24,7 +24,6 @@ public class ParseGradebookUrl {
     public final String createGradeBookUrl(){
 
         String GradeBookUrl = "https://parent-portland.cascadetech.org/portland/PXP2_Gradebook.aspx?AGU=0&studentGU=";
-        System.out.println(studentGuNumber());
         for (int i = 4; i < studentGuNumber().length(); i++) {
             GradeBookUrl = GradeBookUrl + studentGuNumber().charAt(i);
             //System.out.println(GradeBookUrl);

@@ -12,7 +12,6 @@ public class GradeBookParse {
                 .post(); //logs in
 
         Document GradeBookPage = doc;
-        System.out.println(GradeBookPage);
         return GradeBookPage;
     }
 }

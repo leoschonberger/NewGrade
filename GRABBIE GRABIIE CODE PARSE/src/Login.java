@@ -24,7 +24,7 @@ public class Login {
         Document loginDoc = loginForm.parse(); // this is the document that contains response html
 
 
-            //We need to get the values for the login form
+        //We need to get the values for the login form
         Element e = loginDoc.select("input[id=__VIEWSTATE]").first();
         String viewState = e.attr("value");
 
@@ -32,8 +32,7 @@ public class Login {
         String eventValidation = e.attr("value");
 
 
-
-            //We now have all the data needed to fill in the login form and login
+        //We now have all the data needed to fill in the login form and login
         Document doc = Jsoup.connect("https://parent-portland.cascadetech.org/portland/PXP2_Login_Student.aspx?regenerateSessionId=True")
                 .data("__VIEWSTATE", viewState)
                 .data("__EVENTVALIDATION", eventValidation)
@@ -45,9 +44,12 @@ public class Login {
         String HomePageHtml = doc.toString();
 
         TimeUnit.SECONDS.sleep(1);
-        //ParseGradebookUrl StringParserForGradeBookUrl = new ParseGradebookUrl(HomePageHtml);
-        //String gradeBookUrl = StringParserForGradeBookUrl.createGradeBookUrl();
-        //GradeBookParse.ConnectToGradesPage(loginForm, gradeBookUrl);
+        ParseGradebookUrl StringParserForGradeBookUrl = new ParseGradebookUrl(HomePageHtml);
+        String gradeBookUrl = StringParserForGradeBookUrl.createGradeBookUrl();
+        GradeBookParse.ConnectToGradesPage(loginForm, gradeBookUrl);
         gpaParse.gpaparse(loginForm);
+        Document GradeBookPage = GradeBookParse.ConnectToGradesPage(loginForm, gradeBookUrl);
+        GradeBookOrganizer gradebook = new GradeBookOrganizer();
+        CourseDataObject[] courseArray = gradebook.fillCourseArray(GradeBookPage);
     }
 }
