@@ -32,7 +32,7 @@ public class gpaParse {
         String[] gpaArray = new String[2];
         gpaArray[0] = pureUnweightedGpaString;
         gpaArray[1] = pureWeightedGpaString;
-        
+
         return gpaArray;
     }
 }
