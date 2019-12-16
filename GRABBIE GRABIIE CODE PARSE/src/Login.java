@@ -8,7 +8,7 @@ import java.util.concurrent.TimeUnit;
 public class Login {
     private static final String USER_AGENT = "\"Mozilla/5.0 (Windows NT\" +\n" + "          \" 6.1; WOW64) AppleWebKit/535.2 (KHTML, like Gecko) Chrome/15.0.874.120 Safari/535.2\"";
     private static final String USER_ID = "lschonberge9522";
-    private static final String USER_PASSWORD = "Na1gene!";
+    private static final String USER_PASSWORD = "N";
     public Connection.Response loginForm;
 
     public static void main(String[] args) throws IOException, InterruptedException {
@@ -54,13 +54,14 @@ public class Login {
        // CourseDataObject[] courseArray = gradebook.fillCourseArray(GradeBookPage);
     }
 
+    //Returns a boolean value based on weather login was successful or not
     public boolean checkLogin(Document doc){
-        if (doc.select("#ctl00_MainContent_ERROR") .contains("The user name or password is incorrect.") )
-            System.out.println("No");
+        boolean loggedIn = false;
+        if (doc.toString().contains("Return to common login"))
+            loggedIn = false;
         else {
-            System.out.println("Yes");
+            loggedIn = true;
         }
-        return true;
+        return loggedIn;
     }
-
 }
