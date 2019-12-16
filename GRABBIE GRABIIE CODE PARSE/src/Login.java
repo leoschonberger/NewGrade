@@ -41,15 +41,26 @@ public class Login {
                 .cookies(loginForm.cookies())
                 .post(); //logs in
 
-        String HomePageHtml = doc.toString();
 
+        String HomePageHtml = doc.toString();
         TimeUnit.SECONDS.sleep(1);
+        checkLogin(doc);
         ParseGradebookUrl StringParserForGradeBookUrl = new ParseGradebookUrl(HomePageHtml);
         String gradeBookUrl = StringParserForGradeBookUrl.createGradeBookUrl();
         GradeBookParse.ConnectToGradesPage(loginForm, gradeBookUrl);
-        gpaParse.gpaparse(loginForm);
+        GpaParse.gpaparse(loginForm);
         Document GradeBookPage = GradeBookParse.ConnectToGradesPage(loginForm, gradeBookUrl);
         GradeBookOrganizer gradebook = new GradeBookOrganizer();
-        CourseDataObject[] courseArray = gradebook.fillCourseArray(GradeBookPage);
+       // CourseDataObject[] courseArray = gradebook.fillCourseArray(GradeBookPage);
     }
+
+    public boolean checkLogin(Document doc){
+        if (doc.select("#ctl00_MainContent_ERROR") .contains("The user name or password is incorrect.") )
+            System.out.println("No");
+        else {
+            System.out.println("Yes");
+        }
+        return true;
+    }
+
 }

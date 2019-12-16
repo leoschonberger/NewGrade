@@ -51,6 +51,7 @@ public class GradeBookOrganizer {
             dataArray.get(4).add(Element.text());
         }
 
+        /*
         System.out.println(dataArray.get(0).get(0));
         System.out.println(dataArray.get(0).get(1));
         System.out.println(dataArray.get(0).get(2));
@@ -95,7 +96,7 @@ public class GradeBookOrganizer {
         System.out.println(dataArray.get(4).get(5));
         System.out.println(dataArray.get(4).get(6));
         System.out.println(dataArray.get(4).get(7));
-
+*/
 
 
 
