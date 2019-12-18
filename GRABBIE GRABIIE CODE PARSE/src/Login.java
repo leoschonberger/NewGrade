@@ -1,6 +1,7 @@
 import org.jsoup.*;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
+import java.util.ArrayList;
 
 import java.io.IOException;
 import java.util.concurrent.TimeUnit;
@@ -49,7 +50,12 @@ public class Login {
         GradeBookParse.ConnectToGradesPage(loginForm, gradeBookUrl);
         gpaParse.gpaparse(loginForm);
         Document GradeBookPage = GradeBookParse.ConnectToGradesPage(loginForm, gradeBookUrl);
-        GradeBookOrganizer gradebook = new GradeBookOrganizer();
-        CourseDataObject[] courseArray = gradebook.fillCourseArray(GradeBookPage);
+        GradeBookOrganizer Gradebook = new GradeBookOrganizer();
+        ArrayList<CourseDataObject> courseArray = Gradebook.fillCourseArray(GradeBookPage);
+        ParseTeacherImagePage ParseTeacherImagePage = new ParseTeacherImagePage();
+        Document teacherImagePage = ParseTeacherImagePage.login();
+
+
+
     }
 }

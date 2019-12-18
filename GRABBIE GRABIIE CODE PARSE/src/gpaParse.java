@@ -20,8 +20,8 @@ public class gpaParse {
         String unweightedGpaString = unweightedGpa.toString();
         String weightedGpaString = weightedGpa.toString();
 
-        String crudeUnweightedGpaString = unweightedGpaString.replace("<span class=\"gpa-score\">","");
         String crudeWeightedGpaString = unweightedGpaString.replace("<span class=\"gpa-score\">","");
+        String crudeUnweightedGpaString = unweightedGpaString.replace("<span class=\"gpa-score\">","");
 
         String pureUnweightedGpaString = crudeUnweightedGpaString.replace("</span>","");
         String pureWeightedGpaString = crudeWeightedGpaString.replace("</span>","");
