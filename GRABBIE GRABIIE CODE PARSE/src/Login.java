@@ -9,7 +9,7 @@ import java.util.concurrent.TimeUnit;
 public class Login {
     private static final String USER_AGENT = "\"Mozilla/5.0 (Windows NT\" +\n" + "          \" 6.1; WOW64) AppleWebKit/535.2 (KHTML, like Gecko) Chrome/15.0.874.120 Safari/535.2\"";
     private static final String USER_ID = "lschonberge9522";
-    private static final String USER_PASSWORD = "Na1gene!";
+    private static final String USER_PASSWORD = "N";
     public Connection.Response loginForm;
 
     public static void main(String[] args) throws IOException, InterruptedException {
@@ -42,20 +42,27 @@ public class Login {
                 .cookies(loginForm.cookies())
                 .post(); //logs in
 
-        String HomePageHtml = doc.toString();
 
+        String HomePageHtml = doc.toString();
         TimeUnit.SECONDS.sleep(1);
+        checkLogin(doc);
         ParseGradebookUrl StringParserForGradeBookUrl = new ParseGradebookUrl(HomePageHtml);
         String gradeBookUrl = StringParserForGradeBookUrl.createGradeBookUrl();
         GradeBookParse.ConnectToGradesPage(loginForm, gradeBookUrl);
-        gpaParse.gpaparse(loginForm);
+        GpaParse.gpaparse(loginForm);
         Document GradeBookPage = GradeBookParse.ConnectToGradesPage(loginForm, gradeBookUrl);
-        GradeBookOrganizer Gradebook = new GradeBookOrganizer();
-        ArrayList<CourseDataObject> courseArray = Gradebook.fillCourseArray(GradeBookPage);
-        ParseTeacherImagePage ParseTeacherImagePage = new ParseTeacherImagePage();
-        Document teacherImagePage = ParseTeacherImagePage.login();
+        GradeBookOrganizer gradebook = new GradeBookOrganizer();
+       // CourseDataObject[] courseArray = gradebook.fillCourseArray(GradeBookPage);
+    }
 
-
-
+    //Returns a boolean value based on weather login was successful or not
+    public boolean checkLogin(Document doc){
+        boolean loggedIn = false;
+        if (doc.toString().contains("Return to common login"))
+            loggedIn = false;
+        else {
+            loggedIn = true;
+        }
+        return loggedIn;
     }
 }

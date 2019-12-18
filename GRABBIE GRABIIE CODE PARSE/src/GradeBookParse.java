@@ -4,7 +4,8 @@ import org.jsoup.Connection;
         import java.io.IOException;
 
 public class GradeBookParse {
-    //Uses GradeBook URL and cookies from loginForm to open the GradesPage
+
+    //Uses GradeBook URL and cookies from loginForm to open the GradesPage. Returns the GradeBookPage document.
     public static Document ConnectToGradesPage(Connection.Response loginForm, String GradeBookUrl) throws IOException {
         ParseGradebookUrl parseGradebookUrl = new ParseGradebookUrl(GradeBookUrl);
         Document doc = Jsoup.connect(parseGradebookUrl.createGradeBookUrl())
