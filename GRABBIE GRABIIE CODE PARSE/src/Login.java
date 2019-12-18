@@ -9,7 +9,7 @@ import java.util.concurrent.TimeUnit;
 public class Login {
     private static final String USER_AGENT = "\"Mozilla/5.0 (Windows NT\" +\n" + "          \" 6.1; WOW64) AppleWebKit/535.2 (KHTML, like Gecko) Chrome/15.0.874.120 Safari/535.2\"";
     private static final String USER_ID = "lschonberge9522";
-    private static final String USER_PASSWORD = "N";
+    private static final String USER_PASSWORD = "Na1gene!";
     public Connection.Response loginForm;
 
     public static void main(String[] args) throws IOException, InterruptedException {
