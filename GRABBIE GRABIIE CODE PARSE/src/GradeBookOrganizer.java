@@ -74,6 +74,15 @@ public class GradeBookOrganizer {
             courseDataObjectArrayList.get(i).gradeLetter = dataArray.get(3).get(i);
             courseDataObjectArrayList.get(i).gradeNumber = dataArray.get(4).get(i);
         }
+        for (int i = 0; i < 8 ; i++) {
+            courseDataObjectArrayList.get(i).gradeNumber =   courseDataObjectArrayList.get(i).gradeNumber.replace("%","");
+
+            courseDataObjectArrayList.get(i).courseName =  courseDataObjectArrayList.get(i).courseName.substring(3,courseDataObjectArrayList.get(i).courseName.length());
+        }
+
+
+
+
         // courseArrayList is returned to fillCourseArray so it can be returned to main
         return courseDataObjectArrayList;
     }

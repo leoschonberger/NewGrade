@@ -50,9 +50,19 @@ public class Login {
         String gradeBookUrl = StringParserForGradeBookUrl.createGradeBookUrl();
         GradeBookParse.ConnectToGradesPage(loginForm, gradeBookUrl);
         GpaParse.gpaparse(loginForm);
-        Document GradeBookPage = GradeBookParse.ConnectToGradesPage(loginForm, gradeBookUrl);
+        Document gradeBookPage = GradeBookParse.ConnectToGradesPage(loginForm, gradeBookUrl);
         GradeBookOrganizer gradebook = new GradeBookOrganizer();
-       // CourseDataObject[] courseArray = gradebook.fillCourseArray(GradeBookPage);
+       ArrayList<CourseDataObject> dataList = gradebook.fillCourseArray(gradeBookPage);
+
+        for (int i = 0; i < 8; i++) {
+            System.out.println(dataList.get(i).courseName);
+            System.out.println(dataList.get(i).teacherName);
+            System.out.println(dataList.get(i).roomNumber);
+            System.out.println(dataList.get(i).gradeNumber);
+            System.out.println(dataList.get(i).gradeLetter);
+        }
+
+
     }
 
     //Returns a boolean value based on weather login was successful or not
@@ -65,4 +75,8 @@ public class Login {
         }
         return loggedIn;
     }
+
+
+
+
 }
