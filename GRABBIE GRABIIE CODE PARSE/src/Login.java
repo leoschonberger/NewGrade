@@ -10,9 +10,9 @@ import java.util.concurrent.TimeUnit;
 
 public class Login {
     private static final String USER_AGENT = "\"Mozilla/5.0 (Windows NT\" +\n" + "          \" 6.1; WOW64) AppleWebKit/535.2 (KHTML, like Gecko) Chrome/15.0.874.120 Safari/535.2\"";
-    Scanner getLogin = new Scanner(System.in);
-    private String USER_ID = getLogin.next();
-    private String USER_PASSWORD = getLogin.next();
+    //Scanner getLogin = new Scanner(System.in);
+    private String USER_ID = "lschonberge9522";
+    private String USER_PASSWORD = "lschonberge9522";
     public Connection.Response loginForm;
 
     public static void main(String[] args) throws IOException, InterruptedException {
@@ -45,7 +45,8 @@ public class Login {
                 .cookies(loginForm.cookies())
                 .post(); //logs in
 
-
+        InpoQuotes.quoteotd();
+        /*
         String HomePageHtml = doc.toString();
         TimeUnit.SECONDS.sleep(1);
         checkLogin(doc);
@@ -56,7 +57,9 @@ public class Login {
         Document gradeBookPage = GradeBookParse.ConnectToGradesPage(loginForm, gradeBookUrl);
         GradeBookOrganizer gradebook = new GradeBookOrganizer();
        ArrayList<CourseDataObject> dataList = gradebook.fillCourseArray(gradeBookPage);
+         */
 
+       /*
         for (int i = 0; i < 8; i++) {
             System.out.println(dataList.get(i).courseName);
             System.out.println(dataList.get(i).teacherName);
@@ -64,10 +67,8 @@ public class Login {
             System.out.println(dataList.get(i).gradeNumber);
             System.out.println(dataList.get(i).gradeLetter);
         }
-
-
+        */
     }
-
     //Returns a boolean value based on weather login was successful or not
     public boolean checkLogin(Document doc){
         boolean loggedIn = false;
